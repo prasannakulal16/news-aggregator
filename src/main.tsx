@@ -7,9 +7,9 @@ import appRoutes from './router/AppRoutes.tsx'
 import ErrorBoundary from './components/ErrorBoundary/index.tsx'
 
 createRoot(document.getElementById('root')!).render(
-  <ErrorBoundary fallback={<div>Component failed to load.</div>}>
-    <Provider store={store}>
+  <Provider store={store}>
+    <ErrorBoundary fallback={<div>Component failed to load.</div>}>
       <RouterProvider router={appRoutes} />
-    </Provider>
-  </ErrorBoundary>
+    </ErrorBoundary>
+  </Provider>
 )
