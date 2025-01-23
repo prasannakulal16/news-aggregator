@@ -2,8 +2,16 @@
 import React from 'react'
 import { MenuOutlined } from '@ant-design/icons'
 import { Button, Drawer } from 'antd'
+import { useNavigate } from 'react-router-dom'
+import { categories, sources } from '../../config/constants'
+import { useDispatch, useSelector } from 'react-redux'
+import { ArticlesState } from '../../utils/types'
+import { fetchArticles, setCategory, setSource } from '../../features/slice/ArticleSlice'
 
 const Navbar: React.FC = () => {
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const { filters }: ArticlesState = useSelector((state: any) => state.articles)
   const [isDrawerVisible, setIsDrawerVisible] = React.useState(false)
 
   const showDrawer = () => {
@@ -14,6 +22,18 @@ const Navbar: React.FC = () => {
     setIsDrawerVisible(false)
   }
 
+  const handleClearFilter = (e: { preventDefault: () => void }) => {
+    e.preventDefault()
+    dispatch(
+      fetchArticles({
+        q: filters.category
+      })
+    )
+    dispatch(setCategory(categories[0]))
+    dispatch(setSource(sources[0]))
+    navigate('/')
+  }
+
   return (
     <nav className="bg-black text-white py-4 flex items-center justify-between shadow-md mx-auto xl:px-18 lg:px-14 sm:px-10 px-6">
       {/* Left Side - Title */}
@@ -21,10 +41,14 @@ const Navbar: React.FC = () => {
 
       {/* Right Side - Navigation Links */}
       <div className="hidden md:flex space-x-4">
-        <Button type="link" className="text-white hover:text-gray-200">
+        <Button type="link" className="text-white hover:text-gray-200" onClick={handleClearFilter}>
           Home
         </Button>
-        <Button type="link" className="text-white hover:text-gray-200">
+        <Button
+          type="link"
+          className="text-white hover:text-gray-200"
+          onClick={() => navigate('/personalized-news')}
+        >
           Personal Feed
         </Button>
       </div>

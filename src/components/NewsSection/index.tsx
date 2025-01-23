@@ -12,9 +12,9 @@ import { NewsDescription } from './NewsDescription'
 import { Loader } from '../Loader'
 
 interface NewsSectionI {
-  personalized?: string[]
+  personalizedNews?: any[]
   searchInput?: string
-  setSearchInput: React.Dispatch<React.SetStateAction<string>>
+  setSearchInput?: React.Dispatch<React.SetStateAction<string>>
   handleOpenFilter?: any
   selectedSource?: any
   selectedCategory?: any
@@ -22,10 +22,11 @@ interface NewsSectionI {
 
 export const NewsSection = ({
   searchInput,
-  setSearchInput,
+  setSearchInput = () => {},
   handleOpenFilter,
   selectedCategory,
-  selectedSource
+  selectedSource,
+  personalizedNews
 }: NewsSectionI) => {
   const dispatch = useDispatch()
 
@@ -36,9 +37,15 @@ export const NewsSection = ({
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchInput(e.target.value)
   }
+  const { status } = useSelector((state: any) => state.articles)
+  let { articles } = useSelector((state: any) => state.articles)
+  articles = personalizedNews ? personalizedNews : articles
 
-  const { articles, status } = useSelector((state: any) => state.articles)
-  //   articles = personalized ? personalized : articles
+  // const heading = personalizedNews
+  //   ? 'personalized'
+  //   : filters.query
+  //     ? filters.query
+  //     : filters.category
 
   useEffect(() => {
     dispatch(setQuery(debouncedSearchTerm))
@@ -56,15 +63,17 @@ export const NewsSection = ({
     <div>
       <div className="sm:flex gap-4 items-center justify-between mb-6">
         <h1 className="text-blue-800-600 text-4xl font-bold sm:pb-0 pb-4">Top news</h1>
-        <div className="flex gap-4 items-center ">
-          <SearchInput
-            placeholder="Enter article name to search"
-            onSearchChange={handleSearch}
-            enterButton="Search"
-            className="max-w-md"
-          />
-          <CustomButton onClick={handleOpenFilter} icon={<FilterOutlined />} />
-        </div>
+        {!personalizedNews && (
+          <div className="flex gap-4 items-center ">
+            <SearchInput
+              placeholder="Enter article name to search"
+              onSearchChange={handleSearch}
+              enterButton="Search"
+              className="max-w-md"
+            />
+            <CustomButton onClick={handleOpenFilter} icon={<FilterOutlined />} />
+          </div>
+        )}
       </div>
 
       {status === 'loading' ? (

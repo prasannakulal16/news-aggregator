@@ -1,6 +1,10 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { Article, ArticlesState } from '../../utils/types'
-import { fetchNewsAPIArticles } from '../../services/apiServerice'
+import {
+  fetchGuardianArticles,
+  fetchNYTimesArticles,
+  fetchNewsAPIArticles
+} from '../../services/apiServerice'
 
 export const fetchArticles: any = createAsyncThunk(
   'articles/fetchArticles',
@@ -20,17 +24,17 @@ export const fetchArticles: any = createAsyncThunk(
       articles = [...articles, ...newsAPIArticles]
     }
 
-    // // Fetch from The Guardian API
-    // if (source.key === 'guardian-api' || source.key === 'all') {
-    //   const guardianArticles = await fetchGuardianArticles(query, params)
-    //   articles = [...articles, ...guardianArticles]
-    // }
+    // Fetch from The Guardian API
+    if (source.key === 'guardian-api' || source.key === 'all') {
+      const guardianArticles = await fetchGuardianArticles(query, params)
+      articles = [...articles, ...guardianArticles]
+    }
 
-    // // Fetch from NYT API
-    // if (source.key === 'ny-times' || source.key === 'all') {
-    //   const nyTimesArticles = await fetchNYTimesArticles(query, params)
-    //   articles = [...articles, ...nyTimesArticles]
-    // }
+    // Fetch from NYT API
+    if (source.key === 'ny-times' || source.key === 'all') {
+      const nyTimesArticles = await fetchNYTimesArticles(query, params)
+      articles = [...articles, ...nyTimesArticles]
+    }
     return articles
   }
 )
