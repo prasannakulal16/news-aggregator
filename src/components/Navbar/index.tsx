@@ -6,6 +6,7 @@ import { categories, sources } from '../../config/constants'
 import { useDispatch, useSelector } from 'react-redux'
 import { ArticlesState } from '../../utils/types'
 import { fetchArticles, setCategory, setSource } from '../../features/slice/ArticleSlice'
+import CustomButton from '../CustomButton'
 
 const Navbar: React.FC = () => {
   const navigate = useNavigate()
@@ -18,6 +19,15 @@ const Navbar: React.FC = () => {
   }
 
   const closeDrawer = () => {
+    setIsDrawerVisible(false)
+  }
+  const handleHomeClick = () => {
+    navigate('/')
+    setIsDrawerVisible(false)
+  }
+
+  const handlePersonalizedClick = () => {
+    navigate('/personalized-news')
     setIsDrawerVisible(false)
   }
 
@@ -40,12 +50,16 @@ const Navbar: React.FC = () => {
 
       {/* Right Side - Navigation Links */}
       <div className="hidden md:flex space-x-4">
-        <Button type="link" className="text-white hover:text-gray-200" onClick={handleClearFilter}>
+        <Button
+          type="link"
+          className="text-white hover:text-gray-200 font-bold"
+          onClick={handleClearFilter}
+        >
           Home
         </Button>
         <Button
           type="link"
-          className="text-white hover:text-gray-200"
+          className="text-white hover:text-gray-200 font-bold"
           onClick={() => navigate('/personalized-news')}
         >
           Personal Feed
@@ -64,13 +78,24 @@ const Navbar: React.FC = () => {
         onClose={closeDrawer}
         open={isDrawerVisible}
         className="md:hidden"
+        style={{ background: '#D3D3D3' }}
       >
-        <Button type="link" block onClick={closeDrawer} className="font-bold">
-          Home
-        </Button>
-        <Button type="link" block onClick={closeDrawer} className="font-bold">
-          Personal Feed
-        </Button>
+        <div className="bg-gray-200 flex gap-4 flex-col">
+          <CustomButton
+            text="Home"
+            type="link"
+            block
+            onClick={handleHomeClick}
+            className="font-bold border-b-2 border-b-slate-500 text-sm rounded-none"
+          />
+          <CustomButton
+            text="Personal Feed"
+            type="link"
+            block
+            onClick={handlePersonalizedClick}
+            className="font-bold border-b-2 border-b-slate-500 text-sm rounded-none"
+          />
+        </div>
       </Drawer>
     </nav>
   )
