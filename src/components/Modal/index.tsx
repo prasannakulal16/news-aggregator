@@ -28,6 +28,7 @@ const CustomModal: React.FC<CustomModalProps> = ({
       open={isVisible}
       onCancel={onClose}
       onOk={onConfirm}
+      closeIcon={false}
       footer={[
         <button
           key="cancel"

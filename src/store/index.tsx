@@ -4,7 +4,11 @@ import articlesReducer from '../features/slice/ArticleSlice'
 export const store = configureStore({
   reducer: {
     articles: articlesReducer
-  }
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false
+    })
 })
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

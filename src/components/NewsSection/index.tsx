@@ -121,6 +121,7 @@ export const NewsSection = ({
                 url: string
                 source: string
                 publishedAt: Date
+                description: string
               },
               index: Key | null | undefined
             ) => {
@@ -134,6 +135,7 @@ export const NewsSection = ({
                       author={article.author}
                       channel={article.source}
                       publishedAt={article.publishedAt}
+                      description={article.description}
                     />
                   }
                   newsUrl={article.url}

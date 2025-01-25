@@ -49,15 +49,15 @@ export const HomePage = () => {
   }
 
   const handleCloseFilter = () => {
-    setSelectedSource(sources[0])
-    setSelectedCategory(categories?.[0]?.key)
-    dispatch(
-      fetchArticles({
-        q: searchInput
-      })
-    )
-    dispatch(setCategory(categories[0]))
-    dispatch(setSource(sources[0]))
+    // setSelectedSource(sources[0])
+    // setSelectedCategory(categories?.[0]?.key)
+    // dispatch(
+    //   fetchArticles({
+    //     q: searchInput
+    //   })
+    // )
+    // dispatch(setCategory(categories[0]))
+    // dispatch(setSource(sources[0]))
     setIsFilterModalVisible(false)
   }
 
