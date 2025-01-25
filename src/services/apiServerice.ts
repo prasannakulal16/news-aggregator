@@ -33,7 +33,6 @@ export const fetchNewsAPIArticles = async (search: any, filters: any) => {
     filters.category
   }&source=${filters.source || 'all'}`
   const newsApiSearchByQueryCategory = `https://newsapi.org/v2/top-headlines?country=us&q=${search}&category=${filters.category}`
-
   const newsSearchApi =
     search.length > 0 && filters.category?.length > 0
       ? newsApiSearchByQueryCategory

@@ -59,7 +59,7 @@ export const NewsSection = ({
   const handleDateChange = (dates: { startDate: any; endDate: any }) => {
     dispatch(setEndArticleDate(dates.startDate))
     dispatch(setStartArticleDate(dates.endDate))
-
+    dispatch(setQuery('general'))
     dispatch(
       fetchArticles({
         startArticleDate: dates.startDate,
@@ -84,7 +84,7 @@ export const NewsSection = ({
     <div>
       <div className="sm:flex gap-4 items-center justify-between mb-6">
         <h1 className="text-blue-800-600 text-4xl font-bold sm:pb-0 pb-4">
-          {getCategoryBasedTitle(heading?.toLowerCase())}
+          {getCategoryBasedTitle(typeof heading === 'string' ? heading.toLowerCase() : heading)}
         </h1>
         {!personalizedNews && (
           <div className="flex gap-4 items-center ">

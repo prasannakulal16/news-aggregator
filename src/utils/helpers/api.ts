@@ -7,7 +7,7 @@ export const getApi = async (url: string, params: ApiParams): Promise<ApiRespons
     return response.data
   } catch (error) {
     // eslint-disable-next-line no-console
-    console.error('GET API request failed! :', error)
+    console.error('API request failed:', error)
     return null
   }
 }

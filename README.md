@@ -183,7 +183,7 @@ services:
 ### Notes:
 
 **This project is hosted on Vercel! Access it at:**
-:rocket: **xyz.com.vercel.app**
+:rocket: [NewsBridge](https://www.docker.com/products/docker-desktop)
 
 ## Contribution
 

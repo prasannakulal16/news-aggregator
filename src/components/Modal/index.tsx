@@ -18,7 +18,7 @@ const CustomModal: React.FC<CustomModalProps> = ({
   onClose,
   onConfirm,
   children,
-  confirmText = 'Confirm',
+  confirmText = 'Apply Filter',
   cancelText = 'Cancel',
   className = ''
 }) => {
