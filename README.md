@@ -183,7 +183,7 @@ services:
 ### Notes:
 
 **This project is hosted on Vercel! Access it at:**
-:rocket: [NewsBridge](https://www.docker.com/products/docker-desktop)
+:rocket: [NewsBridge](https://news-aggregator-six-bice.vercel.app/)
 
 ## Contribution
 
