@@ -1,6 +1,6 @@
-# The DailyScript (News Aggregator)
+# NewsBridge (News Aggregator)
 
-The DailyScript is a React-based news aggregator application built with Vite. It aggregates and displays news articles from various sources, providing users with a comprehensive platform to stay updated with the latest happenings.
+The NewsBridge is a React-based news aggregator application built with Vite. It aggregates and displays news articles from various sources, providing users with a comprehensive platform to stay updated with the latest happenings.
 
 ## Features
 
@@ -39,8 +39,8 @@ The DailyScript is a React-based news aggregator application built with Vite. It
 1. **Clone the Repository:**
 
    ```bash
-   git clone https://github.com/your-username/dailyscript.git
-   cd dailyscript
+   git clone https://github.com/your-username/news-aggregator.git
+   cd news-aggregator
    ```
 
 2. **Install Dependencies:**
@@ -66,20 +66,91 @@ The DailyScript is a React-based news aggregator application built with Vite. It
 
 ### Docker Setup
 
-1. **Build the Docker Image:**
+#### Installing Docker
+
+- **Windows:**
+
+  1. Download Docker Desktop from the [Docker website](https://www.docker.com/products/docker-desktop).
+  2. Run the installer and follow the on-screen instructions.
+  3. Ensure that Docker Desktop is running after installation.
+
+- **macOS:**
+
+  1. Download Docker Desktop for Mac from the [Docker website](https://www.docker.com/products/docker-desktop).
+  2. Open the downloaded `.dmg` file and drag Docker to the Applications folder.
+  3. Launch Docker Desktop and follow the setup instructions.
+
+- **Linux:**
+  1. Follow the installation guide for your Linux distribution on the [official Docker documentation](https://docs.docker.com/engine/install/).
+  2. Start the Docker service:
+     ```bash
+     sudo systemctl start docker
+     ```
+  3. Optionally, enable Docker to start on boot:
+     ```bash
+     sudo systemctl enable docker
+     ```
+
+#### Building and Running the Docker Image
+
+1. **Navigate to the Project Directory:**
+   Once Docker is installed, navigate to the root of your project (`news-aggregator`), where the `Dockerfile` is located:
 
    ```bash
-   docker build -t dailyscript .
+   cd /path/to/news-aggregator
    ```
 
-2. **Run the Docker Container:**
+2. **Build the Docker Image:**
+   Build the Docker image by running the following command:
 
    ```bash
-   docker run -d -p 3000:3000 --name dailyscript-container dailyscript
+   docker build -t news-aggregator .
    ```
 
-3. **Access the Application:**
-   Open your browser and navigate to `http://localhost:3000`.
+   This command creates a Docker image named `news-aggregator` using the instructions in the `Dockerfile`.
+
+3. **Run the Docker Container:**
+   After building the image, run the container with:
+
+   ```bash
+   docker run -d -p 3000:3000 --name news-aggregator-container news-aggregator
+   ```
+
+   - The `-d` flag runs the container in detached mode.
+   - The `-p` flag maps port 3000 of the container to port 3000 on your local machine.
+
+4. **Access the Application:**
+   Open your browser and navigate to `http://localhost:3000` to access the application.
+
+### Using Docker Compose
+
+If you prefer using Docker Compose, create a `docker-compose.yml` file in the project root with the following content:
+
+```yaml
+version: '3.8'
+services:
+  news-aggregator:
+    build: .
+    ports:
+      - '3000:3000'
+    environment:
+      VITE_NEWS_API_KEY: ${VITE_NEWS_API_KEY}
+      VITE_GUARDIAN_API_KEY: ${VITE_GUARDIAN_API_KEY}
+      VITE_NYT_API_KEY: ${VITE_NYT_API_KEY}
+```
+
+1. **Start the Application:**
+   Run the following command to build and start the services:
+
+   ```bash
+   docker-compose up -d
+   ```
+
+2. **Stop the Application:**
+   To stop the application, use:
+   ```bash
+   docker-compose down
+   ```
 
 ### Deployment to Vercel
 
@@ -109,6 +180,11 @@ The DailyScript is a React-based news aggregator application built with Vite. It
 4. **Access the Deployed App:**
    Vercel will provide you with a deployment URL. Use it to access your live application.
 
+### Notes:
+
+**This project is hosted on Vercel! Access it at:**
+:rocket: **xyz.com.vercel.app**
+
 ## Contribution
 
 Feel free to fork this repository and submit pull requests. Suggestions and improvements are always welcome!
@@ -119,4 +195,4 @@ This project is licensed under the [MIT License](LICENSE).
 
 ---
 
-Enjoy using **The DailyScript** and stay updated with the latest news!
+Enjoy using **news-aggregator** and stay updated with the latest news!

@@ -36,7 +36,7 @@ const Navbar: React.FC = () => {
   return (
     <nav className="fixed top-0 w-full bg-black text-white py-4 flex items-center justify-between shadow-md mx-auto xl:px-18 lg:px-14 sm:px-10 px-6 z-50">
       {/* Left Side - Title */}
-      <div className="text-2xl font-bold">News AG</div>
+      <div className="text-2xl font-bold">NewsBridge</div>
 
       {/* Right Side - Navigation Links */}
       <div className="hidden md:flex space-x-4">
@@ -59,7 +59,7 @@ const Navbar: React.FC = () => {
 
       {/* Drawer for Mobile Navigation */}
       <Drawer
-        title="News AG"
+        title="NewsBridge"
         placement="right"
         onClose={closeDrawer}
         open={isDrawerVisible}

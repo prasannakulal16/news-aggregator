@@ -18,6 +18,7 @@ import { NewsDescription } from './NewsDescription'
 import { Loader } from '../Loader'
 import CustomDatePicker from '../CustomDatepicker'
 import { NoDataFound } from '../NoDataFound'
+import { getCategoryBasedTitle } from '../../utils/helpers/commom'
 
 interface NewsSectionI {
   personalizedNews?: any[]
@@ -83,7 +84,7 @@ export const NewsSection = ({
     <div>
       <div className="sm:flex gap-4 items-center justify-between mb-6">
         <h1 className="text-blue-800-600 text-4xl font-bold sm:pb-0 pb-4">
-          Top {heading?.name} news
+          {getCategoryBasedTitle(heading?.toLowerCase())}
         </h1>
         {!personalizedNews && (
           <div className="flex gap-4 items-center ">
