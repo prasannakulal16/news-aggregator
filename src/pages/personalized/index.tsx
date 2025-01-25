@@ -5,6 +5,7 @@ import { NewsSection } from '../../components/NewsSection'
 import { fetchArticles, setCategory, setSource } from '../../features/slice/ArticleSlice'
 import { ArticlesState } from '../../utils/types'
 import { categories, sources } from '../../config/constants'
+import { EditOutlined, PlusCircleOutlined } from '@ant-design/icons'
 
 interface Article {
   source: string
@@ -114,7 +115,7 @@ export const PersonalizedNewsPage: React.FC = () => {
       <div className="flex justify-end items-center mb-4">
         <Button
           type="primary"
-          icon={personalizedNews?.length ? 'EditIcon' : 'plusIcon'}
+          icon={personalizedNews?.length ? <EditOutlined /> : <PlusCircleOutlined />}
           onClick={() => setIsDrawerOpen(true)}
           size="middle"
           className="flex items-center"

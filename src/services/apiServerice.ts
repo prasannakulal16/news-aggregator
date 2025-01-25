@@ -1,4 +1,4 @@
-import newsImage from '../assets/images/PlaceholderNewsImage.jpg'
+import newsImage from '../assets/images/topnewsPlaceholder.jpg'
 import moment from 'moment'
 import { getApi } from '../utils/helpers/api'
 const NEWS_API_KEY = import.meta.env.VITE_APP_NEWSAPI_KEY

@@ -1,50 +1,122 @@
-# React + TypeScript + Vite
+# The DailyScript (News Aggregator)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The DailyScript is a React-based news aggregator application built with Vite. It aggregates and displays news articles from various sources, providing users with a comprehensive platform to stay updated with the latest happenings.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **News Aggregation:**
 
-## Expanding the ESLint configuration
+  - Integrates APIs from NewsAPI.org, The Guardian, and The New York Times.
+  - Allows users to search and filter news articles by keywords, date, category, and source.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **Personalized News Feed:**
 
-- Configure the top-level `parserOptions` property like this:
+  - Users can select preferred sources, categories, and authors to create a personalized feed in the personal feed tab.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- **Mobile-Responsive Design:**
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+  - Fully responsive UI for seamless experience across different screen sizes.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+- **Interactive Navigation:**
+  - Clicking on a news card redirects users to the respective content for detailed reading.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## Tech Stack
+
+- **Frontend:** React, TypeScript, Tailwind CSS, Ant Design (AntD)
+- **Build Tool:** Vite
+- **Deployment:** Vercel
+- **Containerization:** Docker
+
+## Installation and Setup
+
+### Prerequisites
+
+- Node.js (>=16.x)
+- Docker (with Docker Compose)
+
+### Local Development Setup
+
+1. **Clone the Repository:**
+
+   ```bash
+   git clone https://github.com/your-username/dailyscript.git
+   cd dailyscript
+   ```
+
+2. **Install Dependencies:**
+
+   ```bash
+   npm install
+   ```
+
+3. **Set Environment Variables:**
+   Create a `.env` file in the project root and configure the following variables:
+
+   ```env
+   VITE_NEWS_API_KEY=<your-newsapi-key>
+   VITE_GUARDIAN_API_KEY=<your-guardian-api-key>
+   VITE_NYT_API_KEY=<your-nyt-api-key>
+   ```
+
+4. **Start the Development Server:**
+   ```bash
+   npm run dev
+   ```
+   The app will be accessible at `http://localhost:5173`.
+
+### Docker Setup
+
+1. **Build the Docker Image:**
+
+   ```bash
+   docker build -t dailyscript .
+   ```
+
+2. **Run the Docker Container:**
+
+   ```bash
+   docker run -d -p 3000:3000 --name dailyscript-container dailyscript
+   ```
+
+3. **Access the Application:**
+   Open your browser and navigate to `http://localhost:3000`.
+
+### Deployment to Vercel
+
+1. **Login to Vercel:**
+   If you don’t already have Vercel CLI installed, install it using:
+
+   ```bash
+   npm install -g vercel
+   ```
+
+   Then log in using:
+
+   ```bash
+   vercel login
+   ```
+
+2. **Deploy the Application:**
+   From the project directory, run:
+
+   ```bash
+   vercel
+   ```
+
+3. **Set Environment Variables:**
+   In the Vercel dashboard, configure the environment variables (`VITE_NEWS_API_KEY`, `VITE_GUARDIAN_API_KEY`, `VITE_NYT_API_KEY`).
+
+4. **Access the Deployed App:**
+   Vercel will provide you with a deployment URL. Use it to access your live application.
+
+## Contribution
+
+Feel free to fork this repository and submit pull requests. Suggestions and improvements are always welcome!
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+Enjoy using **The DailyScript** and stay updated with the latest news!

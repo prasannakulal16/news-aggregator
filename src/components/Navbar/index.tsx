@@ -1,4 +1,3 @@
-// components/Navbar.tsx
 import React from 'react'
 import { MenuOutlined } from '@ant-design/icons'
 import { Button, Drawer } from 'antd'
@@ -35,7 +34,7 @@ const Navbar: React.FC = () => {
   }
 
   return (
-    <nav className="bg-black text-white py-4 flex items-center justify-between shadow-md mx-auto xl:px-18 lg:px-14 sm:px-10 px-6">
+    <nav className="fixed top-0 w-full bg-black text-white py-4 flex items-center justify-between shadow-md mx-auto xl:px-18 lg:px-14 sm:px-10 px-6 z-50">
       {/* Left Side - Title */}
       <div className="text-2xl font-bold">News AG</div>
 
@@ -60,7 +59,7 @@ const Navbar: React.FC = () => {
 
       {/* Drawer for Mobile Navigation */}
       <Drawer
-        title="Menu"
+        title="News AG"
         placement="right"
         onClose={closeDrawer}
         open={isDrawerVisible}

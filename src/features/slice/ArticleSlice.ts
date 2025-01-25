@@ -85,6 +85,19 @@ const articlesSlice = createSlice({
     },
     setPreferredAuthors(state, action) {
       state.filters.preferredAuthors = action.payload
+    },
+    setResetFilter(state) {
+      state.filters = {
+        query: '',
+        category: '',
+        startArticleDate: '',
+        endArticleDate: '',
+        source: '',
+        author: '',
+        preferredSources: [],
+        preferredCategories: [],
+        preferredAuthors: []
+      }
     }
   },
   extraReducers: (builder) => {
@@ -112,7 +125,8 @@ export const {
   setSource,
   setPreferredSources,
   setPreferredCategories,
-  setPreferredAuthors
+  setPreferredAuthors,
+  setResetFilter
 } = articlesSlice.actions
 
 export default articlesSlice.reducer

@@ -70,7 +70,6 @@ export const HomePage = () => {
         selectedSource={selectedSource}
         selectedCategory={selectedCategory}
       />
-
       <FilterModal
         sources={sources}
         categories={categories}
