@@ -9,7 +9,7 @@ type Category =
 
 export const getCategoryBasedTitle = (category: Category): string => {
   const categoryContent: Record<Category, string> = {
-    general: 'Latest Top Stories News',
+    general: 'Latest Top Stories',
     business: 'Market Insights News',
     entertainment: 'Trending Now News',
     sports: 'Game Highlights News',
@@ -18,5 +18,5 @@ export const getCategoryBasedTitle = (category: Category): string => {
     science: 'New Discoveries News'
   }
 
-  return categoryContent[category] || 'Latest Top Stories News'
+  return categoryContent[category] || 'Latest Top Stories'
 }
