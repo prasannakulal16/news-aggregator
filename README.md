@@ -62,7 +62,7 @@ The NewsBridge is a React-based news aggregator application built with Vite. It 
    ```bash
    npm run dev
    ```
-   The app will be accessible at `http://localhost:5173`.
+   The app will be accessible at `http://localhost:3000`.
 
 ### Docker Setup
 
