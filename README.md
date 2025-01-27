@@ -113,7 +113,7 @@ The NewsBridge is a React-based news aggregator application built with Vite. It 
    After building the image, run the container with:
 
    ```bash
-   docker run -d -p 3000:3000 --name news-aggregator-container news-aggregator
+   docker run -d -p 3000:3000 news-aggregator
    ```
 
    - The `-d` flag runs the container in detached mode.

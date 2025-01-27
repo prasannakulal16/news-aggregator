@@ -4,8 +4,8 @@ FROM node:20-alpine
 # Set the working directory to /app
 WORKDIR /app
 
-# Copy package.json and package-lock.json to optimize caching
-COPY package.json package-lock.json ./
+# Copy package.json to optimize caching
+COPY package.json ./
 
 # Install the app dependencies
 RUN npm install
